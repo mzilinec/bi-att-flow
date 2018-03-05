@@ -1,4 +1,4 @@
-from tensorflow.python.ops.rnn_cell_impl import _linear
+from tensorflow.contrib.rnn.python.ops.core_rnn_cell import _linear
 from tensorflow.python.util import nest
 import tensorflow as tf
 
