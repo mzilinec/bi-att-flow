@@ -100,6 +100,25 @@ flags.DEFINE_bool("q2c_att", True, "question-to-context attention? [True]")
 flags.DEFINE_bool("c2q_att", True, "context-to-question attention? [True]")
 flags.DEFINE_bool("dynamic_att", False, "Dynamic attention [False]")
 
+#FOO dev
+flags.DEFINE_string("out_dir", "out_dir", "out_dir")
+flags.DEFINE_string("save_dir", "save_dir", "save_dir")
+flags.DEFINE_string("eval_dir", "eval_dir", "eval_dir")
+flags.DEFINE_string("log_dir", "log_dir", "log_dir")
+flags.DEFINE_string("answer_dir", "answer_dir", "answer_dir")
+flags.DEFINE_integer("max_num_sents", 0, "foo")
+flags.DEFINE_integer("max_sent_size", 0, "foo")
+flags.DEFINE_integer("max_ques_size", 0, "foo")
+flags.DEFINE_integer("max_word_size", 0, 'foo')
+flags.DEFINE_integer("max_para_size", 0, "foo")
+flags.DEFINE_integer("char_vocab_size", 0, "foo")
+flags.DEFINE_integer("word_emb_size", 0, "foo")
+flags.DEFINE_integer("word_vocab_size", 0, "foo")
+flags.DEFINE_float("emb_mat", 0, "emb_mat")
+
+flags.DEFINE_float("new_emb_mat", 0, "new_emb_mat")
+
+
 
 def main(_):
     config = flags.FLAGS
