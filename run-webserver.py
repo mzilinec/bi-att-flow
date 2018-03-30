@@ -1,4 +1,4 @@
-import os, json
+import argparse, os, json
 from flask import Flask, request, jsonify
 from squad.demo_prepro import prepro
 from basic.demo_cli import Demo
@@ -67,4 +67,11 @@ def submit():
 
 if __name__ == "__main__":
 
-    app.run(host="0.0.0.0", port=1995, threaded=True)
+    parser = argparse.ArgumentParser("Run a question-answering web server.")
+
+    parser.add_argument("--host", default="0.0.0.0", help="web server host")
+    parser.add_argument("--port", type=int, default=1995, help="web server port")
+
+    args = parser.parse_args()
+
+    app.run(host=args.host, port=args.port, threaded=True)
