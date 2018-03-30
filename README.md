@@ -20,4 +20,11 @@ python run-webserver.py
 Send a POST command with the context and the question in the body as a JSON.
 
 endpoint: **host:port/question**
-example body: { "context": "schmidhuber", "question": "Who is Jurgen Schmidhuber?" }
+
+example body:
+```
+{
+    "context": "schmidhuber",
+    "question": "Who is Jurgen Schmidhuber?"
+}
+```
