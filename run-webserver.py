@@ -21,6 +21,8 @@ if len(context_files) == 0:
 contexts = {}
 for context_file in context_files:
 
+  print(context_file)
+
   context_path = os.path.join(CONTEXTS_PATH, context_file)
   context_name = ".".join(context_file.split(".")[:-1])
 
