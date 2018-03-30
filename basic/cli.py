@@ -29,6 +29,9 @@ flags.DEFINE_bool("single", False, "supervise only the answer sentence? [False]"
 flags.DEFINE_boolean("debug", False, "Debugging mode? [False]")
 flags.DEFINE_bool('load_ema', True, "load exponential average of variables when testing?  [True]")
 flags.DEFINE_bool("eval", True, "eval? [True]")
+flags.DEFINE_bool("wy", False, "Use wy for loss / eval? [False]")
+flags.DEFINE_bool("na", False, "Enable no answer strategy and learn bias? [False]")
+flags.DEFINE_float("th", 0.5, "Threshold [0.5]")
 
 # Training / test parameters
 flags.DEFINE_integer("batch_size", 60, "Batch size [60]")
@@ -37,7 +40,7 @@ flags.DEFINE_integer("test_num_batches", 0, "test num batches [0]")
 flags.DEFINE_integer("num_epochs", 12, "Total number of epochs for training [12]")
 flags.DEFINE_integer("num_steps", 20000, "Number of steps [20000]")
 flags.DEFINE_integer("load_step", 0, "load step [0]")
-flags.DEFINE_float("init_lr", 0.5, "Initial learning rate [0.5]")
+flags.DEFINE_float("init_lr", 0.001, "Initial learning rate [0.001]")
 flags.DEFINE_float("input_keep_prob", 0.8, "Input keep prob for the dropout of LSTM weights [0.8]")
 flags.DEFINE_float("keep_prob", 0.8, "Keep prob for the dropout of Char-CNN weights [0.8]")
 flags.DEFINE_float("wd", 0.0, "L2 weight decay for regularization [0.0]")
@@ -96,6 +99,25 @@ flags.DEFINE_bool("use_word_emb", True, "use word embedding? [True]")
 flags.DEFINE_bool("q2c_att", True, "question-to-context attention? [True]")
 flags.DEFINE_bool("c2q_att", True, "context-to-question attention? [True]")
 flags.DEFINE_bool("dynamic_att", False, "Dynamic attention [False]")
+
+#FOO dev
+flags.DEFINE_string("out_dir", "out_dir", "out_dir")
+flags.DEFINE_string("save_dir", "save_dir", "save_dir")
+flags.DEFINE_string("eval_dir", "eval_dir", "eval_dir")
+flags.DEFINE_string("log_dir", "log_dir", "log_dir")
+flags.DEFINE_string("answer_dir", "answer_dir", "answer_dir")
+flags.DEFINE_integer("max_num_sents", 0, "foo")
+flags.DEFINE_integer("max_sent_size", 0, "foo")
+flags.DEFINE_integer("max_ques_size", 0, "foo")
+flags.DEFINE_integer("max_word_size", 0, 'foo')
+flags.DEFINE_integer("max_para_size", 0, "foo")
+flags.DEFINE_integer("char_vocab_size", 0, "foo")
+flags.DEFINE_integer("word_emb_size", 0, "foo")
+flags.DEFINE_integer("word_vocab_size", 0, "foo")
+flags.DEFINE_float("emb_mat", 0, "emb_mat")
+
+flags.DEFINE_float("new_emb_mat", 0, "new_emb_mat")
+
 
 
 def main(_):
