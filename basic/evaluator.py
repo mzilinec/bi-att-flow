@@ -376,7 +376,7 @@ class MultiGPUF1Evaluator(F1Evaluator):
         return feed_dict
 
 
-class ForwardEvaluator(Evaluator):
+class   ForwardEvaluator(Evaluator):
     def __init__(self, config, model, tensor_dict=None):
         super(ForwardEvaluator, self).__init__(config, model, tensor_dict=tensor_dict)
         self.yp2 = model.yp2
