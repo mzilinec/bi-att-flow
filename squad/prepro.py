@@ -24,8 +24,8 @@ def get_args():
     glove_dir = os.path.join(home, "data", "glove")
     parser.add_argument('-s', "--source_dir", default=source_dir)
     parser.add_argument('-t', "--target_dir", default=target_dir)
-    parser.add_argument("--train_name", default='train-v1.1.json')
-    parser.add_argument("--dev_name", default='dev-v1.1.json')
+    parser.add_argument("--train_name", default='train-v2.0.json')
+    parser.add_argument("--dev_name", default='dev-v2.0.json')
     parser.add_argument('-d', "--debug", action='store_true')
     parser.add_argument("--train_ratio", default=0.9, type=int)
     parser.add_argument("--glove_corpus", default="6B")
@@ -38,12 +38,13 @@ def get_args():
     parser.add_argument("--port", default=8000, type=int)
     parser.add_argument("--split", action='store_true')
     parser.add_argument("--suffix", default="")
+    parser.add_argument("--version", default="2.0")
     # TODO : put more args here
     return parser.parse_args()
 
 
 def create_all(args):
-    out_path = os.path.join(args.source_dir, "all-v1.1.json")
+    out_path = os.path.join(args.source_dir, "all-v{}.json".format(args.version))
     if os.path.exists(out_path):
         return
     train_path = os.path.join(args.source_dir, args.train_name)
@@ -124,7 +125,7 @@ def prepro_each(args, data_type, start_ratio=0.0, stop_ratio=1.0, out_name="defa
     if not args.split:
         sent_tokenize = lambda para: [para]
 
-    source_path = in_path or os.path.join(args.source_dir, "{}-{}v1.1.json".format(data_type, args.suffix))
+    source_path = in_path or os.path.join(args.source_dir, "{}-{}v{}.json".format(data_type, args.suffix, args.version))
     source_data = json.load(open(source_path, 'r'))
 
     q, cq, y, rx, rcx, ids, idxs = [], [], [], [], [], [], []
