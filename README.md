@@ -25,7 +25,7 @@ chmod +x download.sh; ./download.sh
 
 Second, Preprocess Stanford QA dataset (along with GloVe vectors) and save them in `$PWD/data/squad` (~5 minutes):
 ```
-python -m squad.prepro
+python -m squad.prepro --train_name "train-v2.0.json" --dev_name "dev-v2.0.json"
 ```
 
 ## 2. Training
@@ -37,7 +37,7 @@ The training converges at ~18k steps, and it took ~4s per step (i.e. ~20 hours).
 
 Before training, it is recommended to first try the following code to verify everything is okay and memory is sufficient:
 ```
-python -m basic.cli --mode train --noload --debug
+python -m basic.cli --mode train --noload --debug --na
 ```
 
 Then to fully train, run:

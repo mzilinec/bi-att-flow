@@ -25,6 +25,7 @@ def get_args():
     parser.add_argument('-s', "--source_dir", default=source_dir)
     parser.add_argument('-t', "--target_dir", default=target_dir)
     parser.add_argument("--train_name", default='train-v1.1.json')
+    parser.add_argument("--dev_name", default='dev-v1.1.json')
     parser.add_argument('-d', "--debug", action='store_true')
     parser.add_argument("--train_ratio", default=0.9, type=int)
     parser.add_argument("--glove_corpus", default="6B")
@@ -198,7 +199,8 @@ def prepro_each(args, data_type, start_ratio=0.0, stop_ratio=1.0, out_name="defa
                     yi.append([yi0, yi1])
                     cyi.append([cyi0, cyi1])
 
-                if len(qa['answers']) == 0:
+                # set a dummy answer and the no-answer flag when question has no answers
+                if len(qa['answers']) == 0 or qa.get('is_impossible', False):
                     yi.append([(0, 0), (0, 1)])
                     cyi.append([0, 1])
                     na.append(True)
@@ -236,6 +238,7 @@ def prepro_each(args, data_type, start_ratio=0.0, stop_ratio=1.0, out_name="defa
 
     print("saving ...")
     save(args, data, shared, out_name)
+
 
 if __name__ == "__main__":
     main()
